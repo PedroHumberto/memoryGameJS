@@ -23,6 +23,10 @@
     let displaySeconds = 0
     let displayMinutes = 0
     let displayHours = 0
+
+
+    //Set a interval to hold the time
+    interval = null
     
     function timeWatch(){
         seconds++;
@@ -55,6 +59,7 @@
         document.getElementById('display').innerHTML = `${displayHours}:${displayMinutes}:${displaySeconds}`;
     }
     
+
     //finish stopwacht
 
     cardBoard.innerHTML = cardHTML + cardHTML
@@ -70,7 +75,7 @@
         cards.forEach(card =>{
             card.classList.remove("flip")
         })
-        window.setInterval(timeWatch, 1000)
+        interval = window.setInterval(timeWatch, 1000)
     },3000)
 
     
@@ -106,6 +111,7 @@
             score.innerText =`Score: ${points}`
             if(points === 8){
                 window.alert("You Win")
+                window.clearInterval(interval)
             }
         }    
     }
